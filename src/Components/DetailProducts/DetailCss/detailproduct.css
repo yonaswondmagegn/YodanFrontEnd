@@ -1,0 +1,61 @@
+@font-face {
+    font-family: Roboto;
+    src: url('./../../../assets/Roboto-Regular.ttf');
+}
+
+.detailproduct{
+    background-color: #D3E3B8;
+}
+
+.detailproduct__images {
+    position: relative;
+    display: flex;
+    overflow-x: hidden;
+    background-color: #c3d8a0;
+}
+
+.detailproduct__carticon {
+    position: absolute;
+    top: .4rem;
+    right: .2rem;
+    z-index: 2;
+}
+.blur__img{
+    filter: blur(8px);
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.detailimage__each {
+    width: 100%;
+    aspect-ratio: 1 /1;
+    object-fit: contain;
+    flex-shrink: 0;
+    z-index: 2;;
+
+}
+
+.detailproduct__title__price {
+    color: #000;
+    font-family: Roboto;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 100%;
+    /* 32px */
+    letter-spacing: -0.32px;
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+    justify-content: center;
+}
+.detailproduct__description__pdisc{
+    padding: .1rem 1rem .1rem 2rem;
+}
+.detailproduct__order__buttons{
+    display: flex;
+    justify-content: space-around;
+}

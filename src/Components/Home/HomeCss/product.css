@@ -1,0 +1,27 @@
+.product__cont{
+    width: 35%;
+    overflow: hidden;
+    border-radius: 15px;
+    flex-shrink: 0;
+    
+}
+.product__img{
+    width: 100%;
+    aspect-ratio: 1/1.1;
+    /* height: 8rem; */
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (min-width:470px){
+    .product__cont{
+        width: 28%;
+     
+    }
+}
+@media (min-width:1000px){
+    .product__cont{
+        width: 10%;
+     
+    }
+}

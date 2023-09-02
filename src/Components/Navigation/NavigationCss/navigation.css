@@ -1,0 +1,41 @@
+@font-face {
+    font-family: Miltonian;
+    src: url('./../../../assets/Miltonian-Regular.ttf');
+}
+@font-face {
+    font-family: Miama;
+    src: url('./../../../assets/Miama.ttf');
+}
+
+
+.nav{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E4ADC4;
+    padding: 1rem 3rem .5rem .3rem;
+}
+.logo__yodan{
+    font-family: Miltonian;
+    font-size: 2rem;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo__yodan_cosmotics{
+    align-self: flex-end;
+    font-family: Miama;
+    font-size: 2rem;
+}
+.nav__rightside{
+    display: flex;
+    display: none;
+}
+.nav__rigthside__mobile{
+    display: flex;
+    margin-right: 1rem;
+    align-items: center;
+}

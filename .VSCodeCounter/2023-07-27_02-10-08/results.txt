@@ -1,0 +1,56 @@
+Date : 2023-07-27 02:10:08
+Directory : c:\Users\USER\Desktop\reactpros\Yodan\src
+Total : 18 files,  403 codes, 0 comments, 80 blanks, all 483 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript JSX |         12 |        262 |          0 |         62 |        324 |
+| CSS            |          6 |        141 |          0 |         18 |        159 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |         18 |        403 |          0 |         80 |        483 |
+| . (Files)                                                                                    |          4 |         44 |          0 |         11 |         55 |
+| Components                                                                                   |         14 |        359 |          0 |         69 |        428 |
+| Components\BoostedProduct                                                                    |          3 |        108 |          0 |         22 |        130 |
+| Components\BoostedProduct (Files)                                                            |          2 |         52 |          0 |         11 |         63 |
+| Components\BoostedProduct\Boostedcss                                                         |          1 |         56 |          0 |         11 |         67 |
+| Components\ByChategory                                                                       |          2 |         33 |          0 |          9 |         42 |
+| Components\DetailProducts                                                                    |          1 |         33 |          0 |         12 |         45 |
+| Components\Home                                                                              |          6 |        107 |          0 |         20 |        127 |
+| Components\Home (Files)                                                                      |          4 |         75 |          0 |         16 |         91 |
+| Components\Home\HomeCss                                                                      |          2 |         32 |          0 |          4 |         36 |
+| Components\Navigation                                                                        |          2 |         78 |          0 |          6 |         84 |
+| Components\Navigation (Files)                                                                |          1 |         41 |          0 |          4 |         45 |
+| Components\Navigation\NavigationCss                                                          |          1 |         37 |          0 |          2 |         39 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                     | language       | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\USER\Desktop\reactpros\Yodan\src\App.css                                            | CSS            |         12 |          0 |          1 |         13 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\App.jsx                                            | JavaScript JSX |         16 |          0 |          8 |         24 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\BoostedProduct\BoostedProduct.jsx       | JavaScript JSX |         14 |          0 |          2 |         16 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\BoostedProduct\Boostedcss\bproduct.css  | CSS            |         56 |          0 |         11 |         67 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\BoostedProduct\Bossted.jsx              | JavaScript JSX |         38 |          0 |          9 |         47 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\ByChategory\Chategory.jsx               | JavaScript JSX |         16 |          0 |          4 |         20 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\ByChategory\ProductByChategory.jsx      | JavaScript JSX |         17 |          0 |          5 |         22 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\DetailProducts\DetailProduct.jsx        | JavaScript JSX |         33 |          0 |         12 |         45 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Home\Home.jsx                           | JavaScript JSX |         16 |          0 |          2 |         18 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Home\HomeCss\product.css                | CSS            |         13 |          0 |          1 |         14 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Home\HomeCss\scrollbar.css              | CSS            |         19 |          0 |          3 |         22 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Home\Product.jsx                        | JavaScript JSX |         29 |          0 |          7 |         36 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Home\ScrollBar.jsx                      | JavaScript JSX |         13 |          0 |          2 |         15 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Home\TodaysSelection.jsx                | JavaScript JSX |         17 |          0 |          5 |         22 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Navigation\Navigation.jsx               | JavaScript JSX |         41 |          0 |          4 |         45 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\Components\Navigation\NavigationCss\navigation.css | CSS            |         37 |          0 |          2 |         39 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\index.css                                          | CSS            |          4 |          0 |          0 |          4 |
+| c:\Users\USER\Desktop\reactpros\Yodan\src\main.jsx                                           | JavaScript JSX |         12 |          0 |          2 |         14 |
+| Total                                                                                        |                |        403 |          0 |         80 |        483 |
++----------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

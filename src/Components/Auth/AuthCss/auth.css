@@ -1,0 +1,23 @@
+.auth{
+    width: 100%;
+    height: 100vh;
+    padding-top: 20vh;
+    background-color:#D3E3B8 ;
+}
+.auth__btns{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: .3rem;
+}
+.auth__btn{
+    border: none;
+    font-size: 1.4rem;
+    background: none;
+}
+
+.auth__current__page{
+    color: blue;
+    text-shadow: 0 0 2rem blue;
+    text-decoration: underline;
+
+}

@@ -1,0 +1,7 @@
+@media (min-width:1000px) {
+    .home__cont{
+        display: flex;
+        justify-content: space-around;
+    }
+    
+}

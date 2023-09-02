@@ -1,0 +1,27 @@
+.carticon{
+    width: fit-content;
+    position: relative;
+    padding: 10px;
+    align-self: flex-start;
+}
+.cartcount{
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 1000;
+    top: 0;
+    right: 3px;
+    margin: 1px;
+    color: rgb(255, 0, 0);
+}
+
+.cart__btn{
+    border: none;
+    outline: none;
+    background-color: #CB6363;
+    padding: .5rem;
+    border-radius: .3rem;
+    font-size: 1.5rem;
+}
+.multiplecart_system_active_btn{
+    color: blue;
+}

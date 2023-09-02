@@ -1,0 +1,13 @@
+.secuss__message{
+    position: fixed;
+    background-color: rgba(6, 23, 255, 0.671);
+    top: 0;
+    width: 100%;
+}
+.error__message{
+    position: fixed;
+    background-color: rgba(158, 76, 0, 0.671);
+    top: 0;
+    width: 100%;
+    
+}

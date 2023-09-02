@@ -1,0 +1,25 @@
+@font-face {
+    font-family: Miltonian;
+    src: url('./../../../assets/Miltonian-Regular.ttf');
+}
+@font-face {
+    font-family: Miama;
+    src: url('./../../../assets/Miama.ttf');
+}
+
+
+.scrollbar{
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    gap: 1rem;
+    padding: .6rem;
+}
+.chategory__text{
+    font-family: Miama;
+    font-size: 2rem;
+
+}
+.todays_selection{
+    margin-top: 5rem;
+}

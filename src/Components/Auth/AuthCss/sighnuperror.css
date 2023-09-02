@@ -1,0 +1,12 @@
+.sighnup__errors{
+    position: absolute;
+    top: 0;
+    padding: .1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    background-color: rgb(255, 152, 152);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
