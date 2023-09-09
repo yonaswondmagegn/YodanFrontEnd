@@ -26,6 +26,7 @@ const apiCall = ({dispatch})=>next=>async action=>{
 
         
     } catch (error) {
+        console.log(error)
         dispatch({type:onError,payload:{msg:"Problem Detected Please Try Again"}})
         
     }

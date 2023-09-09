@@ -10,7 +10,7 @@ import CartIcon from '../Cart/CartIcon'
 const DetailProduct = ({ }) => {
     const location = useLocation()
     const { id } = useParams()
-
+    const [amount,setamount] = useState(1)
     const [FechedProduct, setFechedProduct] = useState({})
     const [FechedImages, setFechedImages] = useState([])
 
@@ -55,7 +55,9 @@ const DetailProduct = ({ }) => {
                 </div>
             </div>
             <div className="detailproduct__order__buttons">
-                <AddToCart product={product} />
+                <button onClick={()=>setamount(prev=>prev+1)}>+ {amount}</button>
+                <AddToCart product={product.id} amount={amount}/>
+                
                 <OrderBtn />
             </div>
            <AdminContact />

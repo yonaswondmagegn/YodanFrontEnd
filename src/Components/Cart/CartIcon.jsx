@@ -7,7 +7,6 @@ const CartIcon = ({cName}) => {
     const cart = useSelector(state=>state.cart)
     const auth = useSelector(state=>state.auth)
     const navigate = useNavigate()
-    console.log(cart.cartsInAuthUser.length)
 
 
     const onclickHandler = ()=>{
