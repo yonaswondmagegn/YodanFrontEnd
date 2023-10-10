@@ -3,13 +3,14 @@ import BoostedProduct from './BoostedProduct'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import axios from 'axios'
 import './Boostedcss/bproduct.css'
+import config from '../../../config'
 
 const Bossted = () => {
     const [product, setproducts] = useState([])
     const [count, setcount] = useState(0)
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/store/boost/?active=true&ordering=-date')
+        axios.get(`${config.baseURL}/store/boost/?active=true&ordering=-date`)
             .then(res => setproducts(res.data.results))
             .catch(err => console.log(err))
 

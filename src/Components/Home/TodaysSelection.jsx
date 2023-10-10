@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ScrollBar from './ScrollBar'
+import config from '../../../config'
 
 const TodaysSelection = () => {
   const [products,setproducts] = useState([])
 
   useEffect(()=>{
-    axios.get(`http://127.0.0.1:8000/store/product/?ordering=-soled_count`)
+    axios.get(`${config.baseURL}/store/product/?ordering=-soled_count`)
     .then(res =>setproducts(res.data.results))
 
   },[])

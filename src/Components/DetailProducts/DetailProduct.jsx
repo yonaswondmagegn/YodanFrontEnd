@@ -6,6 +6,7 @@ import AddToCart from '../Cart/AddToCart'
 import AdminContact from './AdminContact'
 import './DetailCss/detailproduct.css'
 import CartIcon from '../Cart/CartIcon'
+import config from '../../../config'
 
 const DetailProduct = ({ }) => {
     const location = useLocation()
@@ -17,8 +18,8 @@ const DetailProduct = ({ }) => {
     useEffect(() => {
         const fechData = async () => {
             try {
-                const productfeching = await axios.get(`http://127.0.0.1:8000/store/product/${id}`)
-                const imagefeching = await axios.get(`http://127.0.0.1:8000/store/product/${id}/images`)
+                const productfeching = await axios.get(`${config.baseURL}/store/product/${id}`)
+                const imagefeching = await axios.get(`${config.baseURL}/store/product/${id}/images`)
 
                 setFechedProduct(productfeching.data)
                 setFechedImages(imagefeching.data)
@@ -32,10 +33,12 @@ const DetailProduct = ({ }) => {
     }, [])
 
 
-    const product = location.state?.product_data || FechedProduct
+
+
+    let product = location.state?.product_data || FechedProduct
     const images = location.state?.product_images || FechedImages
 
-
+   
     return (
         <div className='detailproduct'>
             <div className="detailproduct__images" >
@@ -56,7 +59,7 @@ const DetailProduct = ({ }) => {
             </div>
             <div className="detailproduct__order__buttons">
                 <button onClick={()=>setamount(prev=>prev+1)}>+ {amount}</button>
-                <AddToCart product={product.id} amount={amount}/>
+                <AddToCart product={product.id} productinst={product} images = {images} amount={amount}/>
                 
                 <OrderBtn />
             </div>

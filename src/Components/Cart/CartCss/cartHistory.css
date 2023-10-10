@@ -1,0 +1,43 @@
+.cartHistory__main{
+    /* width: 100%; */
+    margin-right: 2rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cartHistory__main__text{
+    align-self: flex-start;
+}
+
+.each_carthistory{
+    width: 90%;
+    background-color: whitesmoke;
+    padding: 1rem 1rem;
+    margin: .2rem 3rem ;
+    /* margin-right: 10rem; */
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ND{
+    background-color: rgba(202, 205, 50, 0.534);
+}
+.D{
+    background-color: rgba(10, 167, 10, 0.493);
+}
+.C{
+    background-color: rgba(211, 10, 10, 0.349);
+}
+.O{
+    background-color: aquaD;
+}
+.cartHistory__cancel__btn{
+    border: none;
+    outline: none;
+    color: black;
+    font-weight: 1000;
+    background: none;
+}

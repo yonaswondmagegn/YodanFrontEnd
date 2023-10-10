@@ -29,7 +29,7 @@ const CartIcon = ({cName}) => {
         </svg>
         <p className="cartcount">{cart?.cartsInLocalStorage?.length >0?
         cart?.cartsInLocalStorage.length:
-        cart?.cartsInAuthUser[0]?.products?.length}</p>
+        cart?.count}</p>
     </div>
     </div>
   )

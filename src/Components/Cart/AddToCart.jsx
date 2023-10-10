@@ -1,93 +1,112 @@
-import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { apiCallBegin } from '../../reduxstates/Auth/authActions'
-import './CartCss/cart.css'
-import { cartById } from '../../reduxstates/Cart/cartReduer'
-import { updateCartInAuthUser } from '../../reduxstates/Cart/cartReduer'
+import React, { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { apiCallBegin } from "../../reduxstates/Auth/authActions";
+import "./CartCss/cart.css";
+import {
+  addcartsAuthUser,
+  isProductAvailableinCart,
+  editAmount,
+  insertProductList,
+} from "../../reduxstates/Cart/cartReduer";
 
-
-const AddToCart = ({ product, amount }) => {
-  const cart = useSelector(state => state.cart)
-  const auth = useSelector(state => state.auth)
-  const [cartlist, setcartlist] = useState(false)
-  const dispatch = useDispatch()
-
-  const cartInfo = cartById(cart?.cartsInAuthUser, 3)[0]
-  console.log(cartInfo)
-
+const AddToCart = ({ product, amount, productinst, images }) => {
+  const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
+  const [cartlist, setcartlist] = useState(false);
+  const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    if (cart?.cartsInAuthUser?.length > 1) {
-      setcartlist(true)
-      return
+    let availebleProduct = isProductAvailableinCart(cart, product);
+    if (availebleProduct?.length > 0) {
+      let updatedamount = availebleProduct[0].amount + amount;
+      updateSingleProductHandler(availebleProduct[0].id, updatedamount);
+      return;
     }
+    const cartidUpdateuser = cart?.cartsInAuthUser?.id;
+    UpdateCartHandler(cartidUpdateuser);
+  };
 
-    const cartidUpdateuser = cart?.cartsInAuthUser[0]?.id
-    UpdateCartHandler(cartidUpdateuser)
-    return
-
-
-
-
-  }
-
+  const updateSingleProductHandler = (targetproductid, updateamount) => {
+    if (localStorage.getItem("auth")) {
+      dispatch(
+        apiCallBegin({
+          url: `store/cartproducts/${targetproductid}/`,
+          method: "put",
+          data: {
+            amount: updateamount,
+            product,
+          },
+          onSuccess: (response) => {
+            dispatch(
+              editAmount({
+                id: targetproductid,
+                amount: updateamount,
+              })
+            );
+          },
+          onError: "onError",
+        })
+      );
+    }
+  };
   const UpdateCartHandler = (cartid) => {
-    if (localStorage.getItem('auth')) {
-      dispatch(apiCallBegin({
-        url: "/store/cartproducts/",
-        method: "post",
-        data: {
-          product,
-          amount
-        },
-        onSuccess: response => {
-          if (response.status == 201) {
-            const cartInfo = cartById(cart?.cartsInAuthUser, cartid)[0]
-            dispatch(apiCallBegin({
-              url: `/store/cart/${cartid}/`,
-              method: "put",
-              data: {
-                condition: cartInfo?.condition,
-                ordercondition: cartInfo?.ordercondition,
-                customer: auth?.profile?.id,
-                products: [...cartInfo?.products, response.data?.id]
-              },
-              onSuccess: response => {
-                dispatch(updateCartInAuthUser({
-                  id: cartid,
-                  cart: response.data
-                }))
-              },
-              onError: "onError"
-            }))
-          }
-        },
-        onError: "OnError"
-      }))
+    if (localStorage.getItem("auth")) {
+      dispatch(
+        apiCallBegin({
+          url: "/store/cartproducts/",
+          method: "post",
+          data: {
+            product,
+            amount,
+          },
+          onSuccess: (response) => {
+            if (response.status == 201) {
+              const cartInfo = cart?.cartsInAuthUser;
+              dispatch(
+                apiCallBegin({
+                  url: `/store/cart/${cartid}/`,
+                  method: "put",
+                  data: {
+                    condition: cartInfo?.condition,
+                    ordercondition: cartInfo?.ordercondition,
+                    customer: auth?.profile?.id,
+                    products: [...cartInfo?.products, response.data?.id],
+                  },
+                  onSuccess: (res) => {
+                    let productWithImage = productinst;
+                    productWithImage.images = images;
+                    dispatch(
+                      insertProductList({
+                        id: response.data.id,
+                        product: productWithImage,
+                        amount,
+                      })
+                    );
+                    dispatch(addcartsAuthUser(res.data));
+                  },
+                  onError: "onError",
+                })
+              );
+            }
+          },
+          onError: "OnError",
+        })
+      );
     }
-  }
-
+  };
 
   return (
     <div className="addtocart__cont">
-
-      <button className='addtocart__btn cart__btn' onClick={onClickHandler} >Add to Cart</button>
-      {cartlist &&
-        <div className="listof__carts">
-          {cart?.cartsInAuthUser?.map((cart, index) => <p key={cart?.id} onClick={() => {
-
-            console.log(cart?.id)
-            UpdateCartHandler(cart?.id)
-          }
-          }>Cart {index + 1}</p>)}
-        </div>}
+      <button className="addtocart__btn cart__btn" onClick={onClickHandler}>
+        Add to Cart
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default AddToCart
-  // const createCartProductHandler = (product_id, amount) => {
-  //   let Data = {
-  //     product: product_id,
-  //     amount: amount
-  //   }
+export default AddToCart;
+// const createCartProductHandler = (product_id, amount) => {
+//   let Data = {
+//     product: product_id,
+//     amount: amount
+//   }

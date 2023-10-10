@@ -1,29 +1,17 @@
-import React from 'react'
-import './CartCss/cartproducts.css'
+import React from "react";
+import "./CartCss/cartproducts.css";
+import ProductInCart from "./EachCartProduct";
 
-const ProductInCart = ({product}) => {
+
+const CartProductLists = ({ products }) => {
+
   return (
-    <div className='product__incart_container'>
-      <img src={product?.product?.images[0]?.image} className='product__incart_img' alt="" />
-      <div className="product__incart__detailinfo">
-        <h4>{product?.product?.title}</h4>
-        <h5 className="product__incart__amount">Amount:
-        <button>-</button>
-        {product.amount}
-        <button>+</button></h5>
-        <h5>Price:{product?.product?.price}</h5>
-      </div>
-      <div className="product__incart__delete">x</div>
+    <div className="cart__product__list">
+      {products?.length >0 ?products?.map((prod) => (
+        <ProductInCart product={prod} key={prod?.id} comp="cart"  />
+      )):<h1>No Products Yet !!</h1>}
     </div>
-  )
-}
-const CartProductLists = ({products}) => {
-  return (
-    <div className='cart__product__list'>
-      {products?.map(product=><ProductInCart product = {product} key={product?.id} />)}
-    </div>
-  )
-}
+  );
+};
 
-export default CartProductLists
-
+export default CartProductLists;

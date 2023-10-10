@@ -18,3 +18,10 @@
     overflow-y: auto;
 
 }
+.math_btn{
+    padding: 0 .7rem;
+    margin: 0 .3rem;
+    background-color: white;
+    border: 1px solid rgb(196, 196, 196);
+    outline: none;
+}

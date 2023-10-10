@@ -1,83 +1,114 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector ,useDispatch} from 'react-redux'
-import { apiCallBegin } from '../../reduxstates/Auth/authActions'
-import CartIcon from './CartIcon'
-import { addProductsList,productsByCartIndex} from '../../reduxstates/Cart/cartReduer'
-import CartProductLists from './cartProductLists'
-import './CartCss/cart.css'
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { apiCallBegin } from "../../reduxstates/Auth/authActions";
+import CartIcon from "./CartIcon";
+import { json, useNavigate } from "react-router-dom";
+import { addProductsList } from "../../reduxstates/Cart/cartReduer";
+import CartProductLists from "./cartProductLists";
+import "./CartCss/cart.css";
+import backIcon from "../../assets/icons.svg";
+import {
+  addcartHistory,
+  insertcartHistory,
+} from "../../reduxstates/Cart/cartReduer";
+import createNewCart from "./newCartCreator";
+import CartHsitory from "./CartHistory";
+
+export const loadCartProducts = (dispatch, cart) => {
+  if (localStorage.getItem("auth")) {
+    if (
+      cart.cartsInAuthUser.products?.length == cart.productsList?.length ||
+      cart?.cartsInAuthUser?.products?.length != 0
+    )
+      return;
+    if (!cart.cartsInAuthUser) return;
+    console.log(cart.cartsInAuthUser, "sub a babich");
+
+    dispatch(
+      apiCallBegin({
+        url: `http://127.0.0.1:8000/store/cart/${cart?.cartsInAuthUser?.id}/cartproducts/`,
+        headers: {
+          Authorization: `JWT ${
+            JSON.parse(localStorage.getItem("auth")).access
+          }`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        onSuccess: (response) => {
+          console.log(response.data, "b");
+          dispatch(addProductsList(response.data));
+        },
+        onError: "onError",
+      })
+    );
+  }
+};
 
 const Cart = () => {
-    const cart = useSelector(state=>state.cart)
-    
-    const [cartNumber,setcartNumber] = useState(1)
+  const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const dispatch = useDispatch()
-    
+  useEffect(() => {
+    loadCartProducts(dispatch, cart);
+  }, [cart?.cartsInAuthUser]);
 
-    useEffect(()=>{
-        console.log('rendered')
-        if(localStorage.getItem('auth')){
-            if(cart?.cartsInAuthUser[cartNumber-1]?.products?.length == 
-                productsByCartIndex(cart?.productsList,cartNumber-1)[0]?.products?.length || null) return;
-                console.log(cart?.cartsInAuthUser[cartNumber-1]?.products?.length,productsByCartIndex(cart?.productsList,cartNumber-1)[0]?.products?.length || null)
-            dispatch(apiCallBegin({
-                url:`http://127.0.0.1:8000/store/cart/${cart?.cartsInAuthUser[cartNumber-1]?.id}/cartproducts/`,
-                headers: {
-                    'Authorization':`JWT ${JSON.parse(localStorage.getItem('auth')).access}`,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                onSuccess:response=>{
-                    dispatch(addProductsList({
-                        cartIndex:cartNumber-1,
-                        products:response.data
-                    }))
-
-                },
-                onError:"onError"
-            }))
-        }
-
-    },[cart.cartsInAuthUser,cartNumber])
-
-
-    const multipleCartSystemHandler = ()=>{
-        if(localStorage.getItem("auth")){
-            return cart?.cartsInAuthUser.map(
-                (cart,index)=><p 
-                className= {
-                    index == cartNumber-1?"multiplecart_system_btn multiplecart_system_active_btn":
-                    'multiplecart_system_btn'}
-                onClick={()=>setcartNumber(index+1)}
-                 key={index}>Cart {index +1}</p>)
-        }
-        else{
-            return cart?.cartsInLocalStorage.map(
-                (cart,index)=><p 
-                className={index == cartNumber-1?
-                    "multiplecart_system_btn multiplecart_system_active_btn":
-                    'multiplecart_system_btn'}
-                onClick={()=>setcartNumber(index +1)}
-                 key={index}>Cart {index +1}</p>)
-
-        }
+  const orderBtnHandler = () => {
+    if (localStorage.getItem("auth")) {
+      let cartInfo = cart.cartsInAuthUser;
+      dispatch(
+        apiCallBegin({
+          url: `store/cart/${cartInfo.id}/`,
+          method: "put",
+          data: {
+            condition: cartInfo?.condition,
+            ordercondition: "O",
+            customer: auth?.profile?.id,
+            products: cartInfo?.products,
+          },
+          onSuccess: (res) => {
+            dispatch(insertcartHistory(res.data));
+            createNewCart(
+              dispatch,
+              JSON.parse(localStorage.getItem("profile")).id
+            );
+          },
+          onError: "onError",
+        })
+      );
     }
+  };
 
-    return (
-        <div className='cart__main__container'>
-            <div className="cart__detail__cart__icon">
-                a
-            <CartIcon cName = 'detailproduct__carticon'/>
-            </div>
-            <h2>{cart?.cartsInLocalStorage?.length>0?
-            cart?.cartsInLocalStorage?.length:
-            cart?.cartsInAuthUser?.length} Products in The Cart</h2>
-            <div className="multiplecartsystem__main__cont">
-            {multipleCartSystemHandler()}
-            </div>
-            {<CartProductLists products = {productsByCartIndex(cart?.productsList,cartNumber-1)[0]?.products} />}
+  return (
+    <div className="cart__main__container">
+      <div className="cart__detail__cart__icon">
+        <img
+          src={backIcon}
+          onClick={() => navigate("/")}
+          alt=""
+          className="cart_backicon"
+        />
+        <CartIcon cName="detailproduct__carticon" />
+      </div>
+      <h2>
+        {cart?.cartsInLocalStorage?.length > 0
+          ? cart?.cartsInLocalStorage?.length
+          : cart?.count}
+        _Products in The Cart
+      </h2>
+
+      {<CartProductLists products={cart?.productsList} />}
+      {cart?.count != 0 && (
+        <div className="cart_orderbtn__container">
+          <button onClick={orderBtnHandler} className="main__cart__orderbtn">
+            Order Know
+          </button>
         </div>
-    )
-}
+      )}
+      <CartHsitory />
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;

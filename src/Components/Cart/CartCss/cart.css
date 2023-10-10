@@ -35,3 +35,20 @@
 .multiplecartsystem__main__cont{
     display: flex;
 }
+.cart_orderbtn__container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.main__cart__orderbtn{
+    background-color: #E4ADC4;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+}
+.main__cart__orderbtn:hover{
+    background-origin: red;
+    transform: scale(1.2);
+}

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ProductByChategory from './ProductByChategory'
+import config from '../../../config'
 
 const Chategory = () => {
     const [chategory,setchategory] = useState([])
 
     useEffect(()=>{
-        axios.get('http://127.0.0.1:8000/store/chategory/?ordering=-likedrating&relatedproducts_gte=3&relatedproducts_lte=')
+        axios.get(`${config.baseURL}/store/chategory/?ordering=-likedrating&relatedproducts_gte=3&relatedproducts_lte=`)
         .then(res=>setchategory(res.data.results))
     },[])
   return (

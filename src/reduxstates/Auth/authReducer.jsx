@@ -16,6 +16,7 @@ const authSlice = createSlice({
         },
         addProfile:(state,action)=>{
             state.profile = action.payload
+            localStorage.setItem('profile',JSON.stringify(action.payload))
             if(state.error){
                 state.error = ""
             }
