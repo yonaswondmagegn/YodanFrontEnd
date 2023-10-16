@@ -7,6 +7,8 @@ import AdminContact from './AdminContact'
 import './DetailCss/detailproduct.css'
 import CartIcon from '../Cart/CartIcon'
 import config from '../../../config'
+import backIcon from '../../assets/icons.svg'
+import { useNavigate } from 'react-router-dom'
 
 const DetailProduct = ({ }) => {
     const location = useLocation()
@@ -14,7 +16,7 @@ const DetailProduct = ({ }) => {
     const [amount,setamount] = useState(1)
     const [FechedProduct, setFechedProduct] = useState({})
     const [FechedImages, setFechedImages] = useState([])
-
+    const navigate = useNavigate()
     useEffect(() => {
         const fechData = async () => {
             try {
@@ -41,27 +43,39 @@ const DetailProduct = ({ }) => {
    
     return (
         <div className='detailproduct'>
+            <div className="detailproduct__nav">
+                <img onClick={()=>navigate('/')} src={backIcon} alt="" />
+                <CartIcon cName = 'detailproduct__carticon' />
+            </div>
+            <div className="detailproduct__largedisc">
             <div className="detailproduct__images" >
                 {images && images.map(image => <img src={image?.image} className='detailimage__each' key={image?.id} />)}
                 <img src={images[0]?.image} className='blur__img' />
-                <CartIcon cName = 'detailproduct__carticon' />
                 
             </div>
-            <div className="dtailproduct__discription">
+            <div className="detailproduct__discription">
                 <div className="detailproduct__title__price">
                     <p className="detailprodcut__title">{product?.title}</p>
-                    <p className="detailproduct__price">Price {product?.price}</p>
+                    <p className="detailproduct__price">Price: {product?.price} Birr</p>
                 </div>
                 <div className="detailprodcut__discription__content">
                     <h2 className="detailproduct__discription__self__text">Description</h2>
                     <p className="detailproduct__description__pdisc">{product?.description}</p>
                 </div>
             </div>
+            </div>
+            
             <div className="detailproduct__order__buttons">
-                <button onClick={()=>setamount(prev=>prev+1)}>+ {amount}</button>
+            <button className='detailproduct__amount__btn' onClick={()=>{
+                if(amount-1 == 0)return;
+                setamount(prev=>prev-1)
+
+            }}>-</button>
+            <p className='detailproduct__amount'>{amount}</p>
+                <button className='detailproduct__amount__btn' onClick={()=>setamount(prev=>prev+1)}>+</button>
                 <AddToCart product={product.id} productinst={product} images = {images} amount={amount}/>
                 
-                <OrderBtn />
+                <OrderBtn product={product} amount={amount} />
             </div>
            <AdminContact />
         </div>

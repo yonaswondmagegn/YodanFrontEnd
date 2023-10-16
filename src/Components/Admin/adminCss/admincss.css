@@ -1,0 +1,24 @@
+.adminnav__redirect__btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+    /* border-bottom: 1px solid rgb(117, 117, 117); */
+}
+.admin__nav__main__cont{
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    top: 0;
+}
+.amdinnav__btn{
+    border: none;
+    background-color: white;
+    font-size: 1.4rem;
+
+}
+.order__active__btn{
+    background-color: rgba(0, 162, 255, 0.637);
+    padding: 0 1rem;
+    border-radius: 1rem;
+}

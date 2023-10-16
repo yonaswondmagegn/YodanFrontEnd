@@ -31,7 +31,7 @@ const Product = ({ product }) => {
       <img src={images[0]?.image} alt="" className="product__img" />
       <div className="product__description">
         <p className="title__text">{product.title}</p>
-        <p className="product__price">{product.price}</p>
+        <p className="product__price">Price {product.price}</p>
       </div>
     </div>
   )

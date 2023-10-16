@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { apiCallBegin } from "../../reduxstates/Auth/authActions";
 import CartIcon from "./CartIcon";
-import { json, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { addProductsList } from "../../reduxstates/Cart/cartReduer";
 import CartProductLists from "./cartProductLists";
 import "./CartCss/cart.css";
@@ -13,16 +13,16 @@ import {
 } from "../../reduxstates/Cart/cartReduer";
 import createNewCart from "./newCartCreator";
 import CartHsitory from "./CartHistory";
+import OrderBtn from "./OrderBtn";
 
 export const loadCartProducts = (dispatch, cart) => {
   if (localStorage.getItem("auth")) {
     if (
-      cart.cartsInAuthUser.products?.length == cart.productsList?.length ||
+      cart.cartsInAuthUser.products?.length == cart.productsList?.length &&
       cart?.cartsInAuthUser?.products?.length != 0
     )
       return;
     if (!cart.cartsInAuthUser) return;
-    console.log(cart.cartsInAuthUser, "sub a babich");
 
     dispatch(
       apiCallBegin({
@@ -35,7 +35,6 @@ export const loadCartProducts = (dispatch, cart) => {
           "Content-Type": "application/json",
         },
         onSuccess: (response) => {
-          console.log(response.data, "b");
           dispatch(addProductsList(response.data));
         },
         onError: "onError",
@@ -49,6 +48,7 @@ const Cart = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   useEffect(() => {
     loadCartProducts(dispatch, cart);
@@ -82,10 +82,11 @@ const Cart = () => {
 
   return (
     <div className="cart__main__container">
-      <div className="cart__detail__cart__icon">
+       <div className="cart__main__product__side">
+       <div className="cart__detail__cart__icon">
         <img
           src={backIcon}
-          onClick={() => navigate("/")}
+          onClick={() => navigate('/')}
           alt=""
           className="cart_backicon"
         />
@@ -95,7 +96,7 @@ const Cart = () => {
         {cart?.cartsInLocalStorage?.length > 0
           ? cart?.cartsInLocalStorage?.length
           : cart?.count}
-        _Products in The Cart
+        {" "}Products in The Cart
       </h2>
 
       {<CartProductLists products={cart?.productsList} />}
@@ -106,6 +107,7 @@ const Cart = () => {
           </button>
         </div>
       )}
+       </div>
       <CartHsitory />
     </div>
   );

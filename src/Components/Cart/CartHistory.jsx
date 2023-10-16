@@ -10,6 +10,7 @@ const EachCartHistory = ({cart})=>{
     const [condition,setCondition] = useState()
     const navigate = useNavigate()
 
+
     const classNameEachCart = `each_carthistory ${cart?.condition}`
     useEffect(()=>{
         if(cart?.condition == "ND"){
@@ -56,12 +57,13 @@ const CartHsitory = ()=>{
             },
             onError:"onError",
         }))
-    },[])
+    },[cart])
 
     return(
         <div className="cartHistory__main">
             <h2 className="cartHistory__main__text">History</h2>
             {cart.cartHistory.map((cartelement,index)=>{
+                if(cartelement?.products?.length == 0)return;
                 return <EachCartHistory cart = {cartelement} key={cartelement.id} />
             })}
         </div>

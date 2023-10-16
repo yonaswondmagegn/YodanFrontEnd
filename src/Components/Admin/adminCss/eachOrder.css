@@ -1,0 +1,27 @@
+.eachorder__main__cont{
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(138, 138, 138);
+}
+
+.eachorder__product__cont{
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px dashed black;
+}
+.order__btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.admin__eachorder__btn{
+    padding: .4rem 1rem;
+    border-radius: .4rem;
+    border: none;
+    font-size: 1rem;
+    margin-top: .2rem;
+}
+.admin__eachorder__cancel{
+    background-color: rgba(252, 44, 44, 0.596);
+}

@@ -12,14 +12,27 @@
     display: flex;
     overflow-x: auto;
     width: 100%;
+    margin-left: 1rem;
     gap: 1rem;
-    padding: .6rem;
+    flex-shrink: 0;
+    /* padding: .6rem; */
 }
 .chategory__text{
     font-family: Miama;
     font-size: 2rem;
-
+    
 }
 .todays_selection{
     margin-top: 5rem;
+    flex-shrink: 0;
+    /* margin-right: 5rem; */
+    padding-bottom: 1rem;
+}
+
+@media (min-width:900px){
+    .todays_selection{
+   
+        margin-right: 5rem;
+    }
+   
 }

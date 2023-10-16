@@ -10,10 +10,14 @@ const Home = () => {
     <>
       <Navigation />
       <div className="home__cont">
+        
         <TodaysSelection />
         <Bossted />
+        <Chategory />
+    
+        
+      
       </div>
-      <Chategory />
     </>
   )
 }

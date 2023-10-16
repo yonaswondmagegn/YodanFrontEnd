@@ -1,0 +1,24 @@
+.status__toogler__btn{
+    border: none;
+    background-color: white;
+    outline: none;
+    font-size: 1rem;
+}
+.nav__status__toogler{
+    position: fixed;
+    top: 4.5rem;
+    background-color: white;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+.adminorder__list{
+    margin-top: 7rem;
+}
+.status__toogler__active{
+    /* color: rgb(50, 159, 255); */
+    font-weight: 600;
+    /* text-shadow: 1px 1px .4rem blue; */
+    border-bottom: 4px solid rgb(0, 174, 255);
+}

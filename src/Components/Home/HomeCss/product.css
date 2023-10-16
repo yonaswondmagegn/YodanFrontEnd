@@ -1,8 +1,9 @@
 .product__cont{
-    width: 35%;
+    width: 33%;
     overflow: hidden;
-    border-radius: 15px;
+    /* border-radius: 5px; */
     flex-shrink: 0;
+    margin-bottom: 1rem;
     
 }
 .product__img{
@@ -12,16 +13,20 @@
     object-fit: cover;
     object-position: center;
 }
+.product__description{
+    align-self: center;
+    margin-left: .5rem;
+}
 
 @media (min-width:470px){
     .product__cont{
-        width: 28%;
+        width: 20%;
      
     }
 }
 @media (min-width:1000px){
     .product__cont{
-        width: 10%;
+        min-width: 15%;
      
     }
 }

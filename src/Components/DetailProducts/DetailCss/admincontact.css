@@ -22,3 +22,12 @@
     font-size: 1.5rem;
     color: white;
 }
+
+@media (min-width:700px){
+    .admin__contacts{
+        width: 40%;
+        position: relative;
+        left: 0;
+        
+    }
+}

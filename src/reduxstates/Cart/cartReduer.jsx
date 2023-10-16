@@ -8,7 +8,8 @@ const cartSlice = createSlice({
     productsList: [],
     count:0,
     cartHistory:[],
-    HistoryLoad:true
+    HistoryLoad:true,
+    detailCartRender:{},
   },
   reducers: {
     addcartsAuthUser: (state, action) => {
@@ -19,8 +20,6 @@ const cartSlice = createSlice({
       state.cartsInLocalStorage.push(action.payload.product);
     },
     addProductsList: (state, action) => {
-    //   if (action.payload?.length == 0) return;
-      console.log(action.payload,'onThe Payloas');
       state.productsList = action.payload;
     },
     insertProductList: (state, action) => {
@@ -44,9 +43,18 @@ const cartSlice = createSlice({
     },
     insertcartHistory:(state,action)=>{
         state.cartHistory=[action.payload,...state.cartHistory]
-    },historyUpdate:(state,action)=>{
+    },
+    historyUpdate:(state,action)=>{
       state.HistoryLoad = !state.HistoryLoad
-    }
+    },
+    detailCartRender:(state,action )=>{
+      state.detailCartRender = action.payload
+    },
+    removeHistoryProducts:(state,action)=>{
+      const cartIndex = state.cartHistory.findIndex(cart=>cart.id == action.payload.id)
+      state.cartHistory[cartIndex].products = action.payload.products
+    },
+   
 
   },
 });
@@ -63,7 +71,9 @@ export const {
   deleteProductList,
   addcartHistory,
   insertcartHistory,
-  historyUpdate
+  historyUpdate,
+  detailCartRender,
+  removeHistoryProducts,
 } = cartSlice.actions;
 
 export const isProductAvailableinCart = (state, targetproduct) =>

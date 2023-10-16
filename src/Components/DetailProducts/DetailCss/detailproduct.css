@@ -4,14 +4,14 @@
 }
 
 .detailproduct{
-    background-color: #D3E3B8;
+    /* background-color: #D3E3B8; */
 }
 
 .detailproduct__images {
     position: relative;
     display: flex;
     overflow-x: hidden;
-    background-color: #c3d8a0;
+    /* background-color: #c3d8a0; */
 }
 
 .detailproduct__carticon {
@@ -37,12 +37,19 @@
     z-index: 2;;
 
 }
+.detailproduct__nav{
+    position: fixed;
+    width: 100%;
+    /* height: 3rem; */
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.329);
+    top: 0;
+}
 
 .detailproduct__title__price {
     color: #000;
     font-family: Roboto;
     font-size: 1.5rem;
-    font-style: italic;
     font-weight: 400;
     line-height: 100%;
     /* 32px */
@@ -58,4 +65,77 @@
 .detailproduct__order__buttons{
     display: flex;
     justify-content: space-around;
+}
+.detailproduct__amount__btn{
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    background-color: white;
+}
+.detailproduct__amount{
+    font-size: 2rem;
+}
+.detailprodcut__discription__content{
+    max-width: 100%;
+    max-height: 50vh;
+    overflow-y: auto;
+    font-size: 2rem;
+    background-color: #ececec23;
+}
+.detailproduct__title__price{
+    font-size:2.3rem;
+}
+
+@media (min-width:700px){
+    .detailproduct{
+        /* margin-left: 5rem; */
+        /* background-color: #D3E3B8; */
+    }
+    .detailproduct__largedisc{
+        display: flex;
+        margin-top: 3rem;
+        /* width: 100%; */
+        /* margin-left: 6rem; */
+        justify-content: space-around;
+    }
+    .detailproduct__discription{
+        margin-left: 1rem;
+        width: 100%;
+    }
+
+    .detailproduct__images{
+        min-width: 40%;
+        /* aspect-ratio: 1; */
+        align-self: flex-start;
+    }
+    .detailproduct__order__buttons{
+        width: 50%;
+        margin: 1rem;
+        
+    }
+    .detailprodcut__discription__content{
+        max-width: 100%;
+        max-height: 40vh;
+        overflow-y: auto;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+   
+
+}
+
+@media (min-width:1100px){
+    .detailprodcut__discription__content{
+        max-height: 60vh;
+        margin-left: 4rem;
+        
+    }
+    .detailproduct__largedisc{
+       margin-left: 3rem;
+    }
+    .detailprodcut__discription{
+        margin-left: 6rem;
+    }
+    
 }

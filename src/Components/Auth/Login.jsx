@@ -14,12 +14,30 @@ export const setProfileHandler = (dispatch)=>{
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                     },
-                    onSuccess:addProfile.type,
+                    onSuccess:res=>{
+                        dispatch(addProfile(res.data))
+                        setCustomerInfo(dispatch,res.data.id)
+                    },
                     onError:setError.type,
             
                 }))
             }
     
+}
+export const setCustomerInfo=(dispatch,id)=>{
+    dispatch(apiCallBegin({
+        url:`customer/customer/${id}`,
+        headers: {
+            'Authorization':`JWT ${JSON.parse(localStorage.getItem('auth')).access}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        onSuccess:res=>{
+            localStorage.setItem('customerInfo',JSON.stringify(res.data))
+        },
+        onError:"onError"
+
+    }))
 }
 export const loginHandler = (dispatch,data)=>{
 
