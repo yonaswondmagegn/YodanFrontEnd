@@ -1,0 +1,132 @@
+.dropdown__list__selcets{
+    position: absolute;
+    width: 90%;
+    height: 100vh;
+    border: 1px black solid;
+    border-radius: .4rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    animation-name: dropdownanim;
+    animation-duration: 300ms;
+    animation-timing-function: ease-out;
+    padding: .6rem;
+
+}
+.dropdown__eachbtn{
+    width: 100%;
+    background-color: whitesmoke;
+    margin: .2rem;
+    
+}
+.dropdown__eachbtn:hover{
+    width: 100%;
+    background-color: white;
+
+}
+
+@keyframes dropdownanim{
+    from{height: 0;}
+    to{height: 100vh;}
+}
+.postproducts__main__cont{
+    margin: .5rem;
+}
+.postproducts__main__cont .input__field{
+    width: 80%;
+    padding: .3rem 1rem;
+    border-radius: .3rem;
+    margin-top: .4rem;
+    font-size: 1.2rem;
+    margin-left: 1.3rem;
+    border: 1px solid black;
+
+}
+.postproducts__main__cont .input__field::placeholder{
+font-size: 1.3rem;
+
+}
+.postproduct__chategory__btncont{
+    width: 80%;
+    margin-left: 1.3rem;
+
+    display: flex;
+    justify-content: space-between;
+
+}
+.postproduct__chategory__btncont .dropdown__btn{
+    font-size: 1.3rem;
+    padding: 0 1.3rem;
+    border: none;
+    border: 1px solid rgb(68, 68, 68);
+    border-radius: .2rem;
+    outline: none;
+
+}
+.postproduct__disc__cont{
+    width: 100%;
+}
+.postproduct__textarea{
+    margin-left: 1.3rem;
+    min-width: 85%;
+    max-width: 85%;
+    padding: .3rem;
+    font-size: 1.3rem;
+    font-family: serif;
+
+}
+.postproduct__disc__text{
+    font-size: 1.4rem;
+}
+.postproduct__chaetory__text{
+    font-size: 1.4rem;
+}
+.acceptimage__div{
+    width: 80%;
+    height: 7rem;
+    margin-left: 1.3rem;
+    border-radius: .2rem;
+    background-color: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.acceptimage__text{
+    
+    font-size: 1.5rem;
+}
+.acceptimage__img{
+    width: 80%;
+    margin-left: 1.3rem;
+    height: 7rem;
+    object-fit: contain;
+    background-origin: #D9D9D9;
+
+}
+.postproduct__disc__submit__btn{
+    padding: .4rem 1rem;
+    font-size: 1.3rem;
+    background-color: blue;
+    border: none;
+    align-self: center;
+    border-radius: .2rem;
+    margin-left: 25%;
+    color: white;
+}
+.admineachproduct__main__cont{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: .5rem;
+    border-radius: .5rem;
+    border: 1px solid whitesmoke;
+    box-shadow: 1px 1px .5rem black;
+}
+
+.admineachproduct__image{
+    width: 35%;
+    aspect-ratio: 1.5;
+    object-fit: cover;
+}

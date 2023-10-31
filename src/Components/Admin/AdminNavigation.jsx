@@ -17,7 +17,7 @@ const AdminNavigation = () => {
   return (
     <div className='admin__nav__main__cont'>
         <div className="adminnav__backicon__cont">
-            <img src= {backIcon} alt="" />
+            <img src= {backIcon} onClick={()=>navigate('/')} alt="" />
         </div>
         <div className="adminnav__redirect__btns">
             <button className= {activateBtn == 'orders'?'amdinnav__btn order__active__btn':"amdinnav__btn "} onClick={()=>{

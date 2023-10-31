@@ -22,3 +22,21 @@
     padding: 0 1rem;
     border-radius: 1rem;
 }
+.slogan__btns{
+    padding: .1rem 1rem;
+    background-color: blue;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: .3rem;
+    color: white;
+    margin-left: 20%;
+}
+
+@media (min-width:500px){
+    .admin__main__cont{
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

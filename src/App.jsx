@@ -17,11 +17,18 @@ import Search from "./Components/Search/Search";
 import Admin from "./Components/Admin/Admin";
 import AdminOrder from "./Components/Admin/AdminOrder";
 import Footer from "./Components/Footer/Footer";
+import AdminDetailOrder from "./Components/Admin/AdminDetailOrder/AdminDetailOrder";
+import AdminProducts from "./Components/Admin/AdminProducts";
+import PostProduct from "./Components/Admin/AdminDetailProduct/PostProduct";
+import AdminBoost from "./Components/Admin/AdminBoost";
+import AddBoost from "./Components/Admin/AdminBoost/AddBoost";
+import { useNavigate } from "react-router-dom";
 
 
 function App() {
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   useEffect(() => {
     setProfileHandler(dispatch);
@@ -66,6 +73,7 @@ function App() {
 
   return (
     <>
+     {JSON.parse(localStorage.getItem('customerInfo'))?.user?.is_staff?<button onClick={()=>navigate('/admin/orders')} className="ABtn_btn">ABtn</button>:''}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<DetailProduct />} />
@@ -76,9 +84,12 @@ function App() {
         <Route path="/admin" element={<Admin />}>
          
           <Route path="orders" element={<AdminOrder />} />
-          <Route path="products" element={<h1>Products</h1>} />
-          <Route path="boost" element={<h1>Boost</h1>} />
+          <Route path = "orders/:id" element={<AdminDetailOrder />} />
+          <Route path="products" element={<AdminProducts />} />
+          <Route path="boost" element={<AdminBoost />} />
         </Route>
+        <Route path="/admin/products/post" element= {<PostProduct />} />
+        <Route path="/admin/boost/add" element= {<AddBoost/>} />
       </Routes>
       <Footer />
     </>

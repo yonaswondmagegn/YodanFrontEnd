@@ -1,0 +1,78 @@
+.adminboost__main__cont{
+    margin-top: 5rem;
+}
+.eachboostproduct__main__cont{
+    display: flex;
+    width: 98%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0.4rem;
+    border-radius: .5rem;
+    border: 1px solid whitesmoke;
+    box-shadow: 1px 1px .5rem black;
+}
+.eachboostproduct__img{
+    width: 25%;
+    aspect-ratio: 1.1;
+    object-fit: cover;
+}
+.eachboostproduct__checkbox{
+    margin-left: .2rem;
+}
+.addboostproduct__each__main__cont{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: .5rem;
+    border-radius: .6rem;
+    border: 1px solid whitesmoke ;
+    box-shadow: 1px 1px 1rem rgb(94, 91, 91);
+   
+}
+.addboostproduct__each__main__cont:hover{
+    background-color: gray;
+}
+.addboost__slogan{
+    width: 90%;
+    margin: .5rem;
+    padding: .4rem;
+    border: 1px solid black;
+    outline: none;
+}
+.addboost__slogan::placeholder{
+    font-size: 1.2rem;
+}
+.addboost__notselected__product{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(117, 117, 117);
+    margin: .3rem;
+    border-radius: .5rem;
+    height: 4rem;
+}
+.slogan__btns{
+    padding: .1rem 1rem;
+    background-color: blue;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: .3rem;
+    color: white;
+    margin-left: 20%;
+}
+.addboost__selected__img{
+    width: 90%;
+    height: 10rem;
+    object-fit: cover;
+    object-position: center;
+    margin: 1rem;
+}
+.boost_add_btn{
+    margin-left: 70%;
+}
+.addboost__product__main__cont{
+    height: 60vh;
+    overflow: auto;
+    margin-bottom: 2rem;
+}

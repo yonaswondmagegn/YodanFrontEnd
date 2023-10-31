@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import AdminNavigation from "./AdminNavigation";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-// import { useEffect } from 'react';
+import './adminCss/admincss.css'
 
 const Admin = () => {
   const navigate = useNavigate();

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CancelOrder from "./CancelOrder";
 import DeliveredOrder from "./DeliveredOrder";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,7 @@ import '../adminCss/eachOrder.css'
 
 const EachOrder = ({ order }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const adminOrder = useSelector((state) => state.admin);
   const [customerEachOrder, setCustomerEachOrder] = useState();
 
@@ -84,16 +86,23 @@ const EachOrder = ({ order }) => {
     }
   }, [adminOrder]);
 
+  const onClickHandler = ()=>{
+
+    navigate(`/admin/orders/${order.id}`,{state:{
+      cart:order
+    }})
+  }
+
   return (
-    <div className="eachorder__main__cont">
-        <div className="eachorder__profile">
+    <div className="eachorder__main__cont" >
+        <div className="eachorder__profile" onClick={onClickHandler} >
           <p className="profile__name"> {customerEachOrder?.user?.username}</p>
           <p className="profile__phonenumber">
             {customerEachOrder?.user?.phonenumber}
           </p>
         </div>
       <div className="eachorder__product__cont">
-        <div className="order__disc">
+        <div className="order__disc" onClick={onClickHandler}>
           <p className="number_of_products">
             {order?.products?.length} Type of Products
           </p>
