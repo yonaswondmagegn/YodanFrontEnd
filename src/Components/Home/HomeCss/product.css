@@ -4,6 +4,9 @@
     /* border-radius: 5px; */
     flex-shrink: 0;
     margin-bottom: 1rem;
+    /* padding: 1rem; */
+    background-color: 'green';
+    cursor: pointer;
     
 }
 .product__img{
@@ -12,6 +15,7 @@
     /* height: 8rem; */
     object-fit: cover;
     object-position: center;
+    border-radius: .5rem;
 }
 .product__description{
     align-self: center;

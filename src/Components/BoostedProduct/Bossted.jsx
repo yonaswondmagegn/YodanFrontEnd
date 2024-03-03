@@ -4,10 +4,12 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import axios from 'axios'
 import './Boostedcss/bproduct.css'
 import config from '../../../config'
+import { useNavigate } from 'react-router-dom'
 
 const Bossted = () => {
     const [product, setproducts] = useState([])
     const [count, setcount] = useState(0)
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`${config.baseURL}/store/boost/?active=true&ordering=-date`)

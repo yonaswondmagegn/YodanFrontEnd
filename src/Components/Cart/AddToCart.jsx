@@ -8,14 +8,19 @@ import {
   editAmount,
   insertProductList,
 } from "../../reduxstates/Cart/cartReduer";
+import { useNavigate } from "react-router-dom";
 
 const AddToCart = ({ product, amount, productinst, images }) => {
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
   const [cartlist, setcartlist] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const onClickHandler = () => {
+    if(!localStorage.getItem('auth')){
+      navigate('/auth')
+      return};
     let availebleProduct = isProductAvailableinCart(cart, product);
     if (availebleProduct?.length > 0) {
       let updatedamount = availebleProduct[0].amount + amount;
@@ -48,7 +53,10 @@ const AddToCart = ({ product, amount, productinst, images }) => {
         })
       );
     }
-  };
+    else{
+      navigate('/auth')
+    }
+  }
   const UpdateCartHandler = (cartid) => {
     if (localStorage.getItem("auth")) {
       dispatch(

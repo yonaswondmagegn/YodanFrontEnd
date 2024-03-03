@@ -23,6 +23,7 @@ import PostProduct from "./Components/Admin/AdminDetailProduct/PostProduct";
 import AdminBoost from "./Components/Admin/AdminBoost";
 import AddBoost from "./Components/Admin/AdminBoost/AddBoost";
 import { useNavigate } from "react-router-dom";
+import Test from "./Test";
 
 
 function App() {

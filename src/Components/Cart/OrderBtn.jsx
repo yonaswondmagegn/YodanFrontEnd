@@ -2,17 +2,21 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { apiCallBegin } from "../../reduxstates/Auth/authActions";
 import { insertcartHistory } from "../../reduxstates/Cart/cartReduer";
+import { useNavigate } from "react-router-dom";
 
 const OrderBtn = ({ product, amount }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate()
 
   useEffect(()=>{
     console.log(amount,'FROM ORDER BTN')
   },[])
 
   const onClickHandler = ()=>{
-    if(!localStorage.getItem('auth'))return;
+    if(!localStorage.getItem('auth')){
+      navigate('/auth')
+      return};
     dispatch(
       apiCallBegin({
         url: `store/cartproducts/`,

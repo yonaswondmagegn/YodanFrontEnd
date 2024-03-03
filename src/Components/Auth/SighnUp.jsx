@@ -5,6 +5,7 @@ import { loginHandler } from './Login'
 import { setError } from '../../reduxstates/Auth/authReducer'
 import { useRef } from 'react'
 import './AuthCss/sighnup.css'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -14,6 +15,7 @@ const SighnUp = () => {
     const userref = useRef()
     const phoneref = useRef()
     const passwordref = useRef()
+    const navigate = useNavigate()
     console.log(entities)
 
     
@@ -47,7 +49,7 @@ const SighnUp = () => {
             data:signupData,
             onSuccess:response=>{
                 if(response.status == 201){
-                    loginHandler(dispatch,loginData)
+                    loginHandler(dispatch,loginData,navigate)
                 }
             },
             onError:setError.type

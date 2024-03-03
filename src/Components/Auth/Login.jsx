@@ -4,6 +4,7 @@ import './AuthCss/sighnup.css'
 import { apiCallBegin } from '../../reduxstates/Auth/authActions'
 import { useSelector,useDispatch } from 'react-redux'
 import { saveTookns ,addProfile,setError,nullError} from '../../reduxstates/Auth/authReducer'
+import { useNavigate } from 'react-router-dom'
 
 export const setProfileHandler = (dispatch)=>{
             if(localStorage.getItem('auth')){
@@ -39,7 +40,7 @@ export const setCustomerInfo=(dispatch,id)=>{
 
     }))
 }
-export const loginHandler = (dispatch,data)=>{
+export const loginHandler = (dispatch,data,navigate)=>{
 
     dispatch(apiCallBegin({
         url:"auth/jwt/create",
@@ -48,7 +49,7 @@ export const loginHandler = (dispatch,data)=>{
         onSuccess:response=>{
             dispatch(saveTookns(response.data))
             setProfileHandler(dispatch)
-
+            navigate('/')
             
         },
         onError:setError.type,
@@ -59,6 +60,8 @@ const Login = () => {
     const dispatch = useDispatch()
     const nameref = useRef()
     const passwordref = useRef()
+    const navigate = useNavigate()
+
 
 
     const onSubmitHandler = (event)=>{
@@ -77,7 +80,7 @@ const Login = () => {
                 username: nameref.current.value,
                 password: passwordref.current.value
             }
-         loginHandler(dispatch,data)
+         loginHandler(dispatch,data,navigate)
     }
     return (
         <div className='sighnup' onSubmit={onSubmitHandler}>

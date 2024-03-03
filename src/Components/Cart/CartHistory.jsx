@@ -42,21 +42,28 @@ const EachCartHistory = ({cart})=>{
 const CartHsitory = ()=>{
     const cart = useSelector(state=>state.cart)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(()=>{
-        if(cart.cartHistory?.length !=0)return;
-        dispatch(apiCallBegin({
-            url:`store/cart/?condition=&customer=${JSON.parse(localStorage.getItem('profile')).id}&ordercondition=O&ordering=-id`,
-            headers: {
-                'Authorization':`JWT ${JSON.parse(localStorage.getItem('auth')).access}`,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            onSuccess:res=>{
-                dispatch(addcartHistory(res.data))
-            },
-            onError:"onError",
-        }))
+        if(localStorage.getItem('profile')){
+            if(!cart)return;
+            if(cart?.cartHistory?.length !=0)return;
+                
+                dispatch(apiCallBegin({
+                    url:`store/cart/?condition=&customer=${JSON.parse(localStorage.getItem('profile'))?.id}&ordercondition=O&ordering=-id`,
+                    headers: {
+                        'Authorization':`JWT ${JSON.parse(localStorage.getItem('auth')).access}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    onSuccess:res=>{
+                        dispatch(addcartHistory(res.data))
+                    },
+                    onError:"onError",
+                }))
+        }else{
+            navigate('/auth')
+        }
     },[cart])
 
     return(
