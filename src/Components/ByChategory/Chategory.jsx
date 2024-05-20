@@ -8,7 +8,7 @@ const Chategory = () => {
     const [chategory,setchategory] = useState([])
 
     useEffect(()=>{
-        axios.get(`${config.baseURL}/store/chategory/?ordering=-likedrating&relatedproducts_gte=3&relatedproducts_lte=`)
+        axios.get(`${config.baseURL}/store/chategory/?ordering=-likedrating`)
         .then(res=>setchategory(res.data.results))
     },[])
   return (
