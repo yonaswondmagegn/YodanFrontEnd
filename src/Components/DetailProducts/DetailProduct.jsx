@@ -8,6 +8,7 @@ import './DetailCss/detailproduct.css'
 import CartIcon from '../Cart/CartIcon'
 import config from '../../../config'
 import backIcon from '../../assets/icons.svg'
+import { ArrowLeft } from 'react-feather'
 import { useNavigate } from 'react-router-dom'
 
 const DetailProduct = ({ }) => {
@@ -44,7 +45,7 @@ const DetailProduct = ({ }) => {
     return (
         <div className='detailproduct'>
             <div className="detailproduct__nav">
-                <img onClick={()=>navigate('/')} src={backIcon} alt="" />
+                <ArrowLeft  onClick={()=>navigate('/')}/>
                 <CartIcon cName = 'detailproduct__carticon' />
             </div>
             <div className="detailproduct__largedisc">
