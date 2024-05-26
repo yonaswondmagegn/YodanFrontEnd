@@ -7,6 +7,7 @@ import { addProductsList } from "../../reduxstates/Cart/cartReduer";
 import CartProductLists from "./cartProductLists";
 import "./CartCss/cart.css";
 import backIcon from "../../assets/Icons.svg";
+import { ArrowLeft } from "react-feather";
 import {
   addcartHistory,
   insertcartHistory,
@@ -84,8 +85,7 @@ const Cart = () => {
     <div className="cart__main__container">
        <div className="cart__main__product__side">
        <div className="cart__detail__cart__icon">
-        <img
-          src={backIcon}
+        <ArrowLeft
           onClick={() => navigate('/')}
           alt=""
           className="cart_backicon"
