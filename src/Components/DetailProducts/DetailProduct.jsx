@@ -7,7 +7,6 @@ import AdminContact from './AdminContact'
 import './DetailCss/detailproduct.css'
 import CartIcon from '../Cart/CartIcon'
 import config from '../../../config'
-
 import { ArrowLeft } from 'react-feather'
 import { useNavigate } from 'react-router-dom'
 
