@@ -6,7 +6,7 @@ import {  useNavigate } from "react-router-dom";
 import { addProductsList } from "../../reduxstates/Cart/cartReduer";
 import CartProductLists from "./cartProductLists";
 import "./CartCss/cart.css";
-import backIcon from "../../assets/icons.svg";
+import backIcon from "../../assets/Icons.svg";
 import {
   addcartHistory,
   insertcartHistory,
