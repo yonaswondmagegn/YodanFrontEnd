@@ -10,7 +10,7 @@ const Product = ({ product }) => {
 
   useEffect(() => {
 
-    axios.get(`${config.baseURL}store/product/${product.id}/images/`)
+    axios.get(`${config.baseURL}/store/product/${product.id}/images/`)
     .then(res => setimages(res.data))
     .catch(err => console.log(err))
 
